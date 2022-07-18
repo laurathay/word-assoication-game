@@ -40,6 +40,12 @@ function populateQuestions() {
         const questionBox = document.createElement('div')
         questionBox.classList.add('question-box')
 
+        //adding our logo pen above it
+        const logoDisplay = document.createElement('h1')
+        logoDisplay.textContent = "✒"
+        questionBox.append(logoDisplay)
+
+
         //we make space inside the cards to put the tip
         questions.quiz.forEach(tip => {
             //by creating a p 

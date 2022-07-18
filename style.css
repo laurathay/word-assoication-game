@@ -19,3 +19,7 @@
     padding: 0px 40px 10px 40px;
 }
 
+.question-box h1 {
+    text-align: left;
+    color: white;
+}
