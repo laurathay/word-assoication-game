@@ -30,12 +30,25 @@ const questions = [
 ]
 
 let score = 0
+//we show the score with textContent
 scoreDisplay.textContent = score
 
+//we make appear the questions card
 function populateQuestions() {
     questions.forEach(questions => {
+        //we start by creating the boxes to appear with a div and add the question-box class
         const questionBox = document.createElement('div')
         questionBox.classList.add('question-box')
+
+        //we make space inside the cards to put the tip
+        questions.quiz.forEach(tip => {
+            //by creating a p 
+            const tipText = document.createElement("p")
+            //we assign the tip inside it
+            tipText.textContent = tip
+            //as we need to put the tip inside the question box 
+            questionBox.append(tipText)
+        })
         questionDisplay.append(questionBox)
     })
 }
