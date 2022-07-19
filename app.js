@@ -55,6 +55,20 @@ function populateQuestions() {
             //as we need to put the tip inside the question box 
             questionBox.append(tipText)
         })
+
+        // we put the button inside the box 
+        const questionButtons = document.createElement("button")
+        questionButtons.addList.add('question-buttons')
+        questionBox.append(questionButtons)
+
+        //we do a forEach button for every questions
+        question.quiz.forEach(option => {
+            const questionButton = document.createElement("button")
+            questionButton.classList.add('question-button')
+
+            questionButton.append(questionButton)
+        })
+
         questionDisplay.append(questionBox)
     })
 }
