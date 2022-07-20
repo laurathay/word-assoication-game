@@ -64,16 +64,23 @@ function populateQuestions() {
         questionBox.append(questionButtons)
 
         //we do a forEach button for every questions
-        question.options.forEach(option => {
+        question.options.forEach((option, optionIndex) => {
             const questionButton = document.createElement('button')
             questionButton.classList.add('question-button')
             questionButton.textContent = option
         
-            questionButtons.append(questionButon)
+            questionButtons.addEventListener('click', () => checkAnswer())
+        
+            questionButtons.append(questionButton)
         })
 
         questionDisplay.append(questionBox)
     }) 
 }
 
-populateQuestions();
+populateQuestions()
+
+function checkAnswer(option, optionIndex) {
+    console.log('option', option)
+    console.log('optionIndex', optionIndex)
+}
