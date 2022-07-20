@@ -75,31 +75,45 @@ function populateQuestions() {
             questionButton.textContent = option
         
             //on ajoute un evenement au bouton pour verifier la reponse
-            questionButton.addEventListener('click', () => checkAnswer(questionButton, option, optionIndex +1, question.correct))
+            questionButton.addEventListener('click', () => checkAnswer(questionBox, questionButton, option, optionIndex +1, question.correct))
         
-            
+
             questionButtons.append(questionButton)
         })
 
+        //pour savoir si on a bon ou pas a la réponse
+        const answerDisplay = document.createElement('div')
+        answerDisplay.classList.add('answer-display')
+
+        questionBox.append(answerDisplay)
         questionDisplay.append(questionBox)
     }) 
 }
 
 populateQuestions()
 
-function checkAnswer(questionButton, option, optionIndex, correctAnswer) {
+function checkAnswer(questionBox, questionButton, option, optionIndex, correctAnswer) {
     console.log('option', option)
     console.log('optionIndex', optionIndex)
 
     if (optionIndex === correctAnswer) {
         score++
         scoreDisplay.textContent = score
+        addResult(questionBox, "Correct!")
     } else {
         score--
         scoreDisplay.textContent = score
+        addResult(questionBox, "Wrong!")
     }
     //on a mis un array vide du coup il enregistre la question dans l'array
     clicked.push(option)
     //le bouton est dasctivé quand on clique dessus 
     questionButton.disabled = clicked.includes(option)
+}
+
+function addResult(questionBox, answer) {
+    //selectionne la classe dans la questionBox
+    const answerDisplay = questionBox.querySelector('.answer-display')
+    //affiche la reponse dans cette classe
+    answerDisplay.textContent = answer
 }
