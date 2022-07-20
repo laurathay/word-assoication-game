@@ -69,7 +69,7 @@ function populateQuestions() {
             questionButton.classList.add('question-button')
             questionButton.textContent = option
         
-            questionButtons.addEventListener('click', () => checkAnswer())
+            questionButton.addEventListener('click', () => checkAnswer(option, optionIndex +1, question.correct))
         
             questionButtons.append(questionButton)
         })
@@ -80,7 +80,15 @@ function populateQuestions() {
 
 populateQuestions()
 
-function checkAnswer(option, optionIndex) {
+function checkAnswer(option, optionIndex, correctAnswer) {
     console.log('option', option)
     console.log('optionIndex', optionIndex)
+
+    if (optionIndex === correctAnswer) {
+        score++
+        scoreDisplay.textContent = score
+    } else {
+        score--
+        scoreDisplay.textContent = score
+    }
 }
