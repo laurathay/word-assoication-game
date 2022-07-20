@@ -23,3 +23,22 @@
     text-align: left;
     color: white;
 }
+
+.question-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.question-button{
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: bisque;
+    color: white;
+}
+
+.question-button:disabled{
+    background-color: azure;
+    color: grey;
+}
