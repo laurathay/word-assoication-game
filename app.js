@@ -30,6 +30,8 @@ const questions = [
 ]
 
 let score = 0
+let clicked = []
+
 //we show the score with textContent
 scoreDisplay.textContent = score
 
@@ -65,12 +67,17 @@ function populateQuestions() {
 
         //we do a forEach button for every questions
         question.options.forEach((option, optionIndex) => {
+            //on creer le bouton
             const questionButton = document.createElement('button')
+            //on lui attribut la class question-button
             questionButton.classList.add('question-button')
+            //on relie le texte des option
             questionButton.textContent = option
         
-            questionButton.addEventListener('click', () => checkAnswer(option, optionIndex +1, question.correct))
+            //on ajoute un evenement au bouton pour verifier la reponse
+            questionButton.addEventListener('click', () => checkAnswer(questionButton, option, optionIndex +1, question.correct))
         
+            
             questionButtons.append(questionButton)
         })
 
@@ -80,7 +87,7 @@ function populateQuestions() {
 
 populateQuestions()
 
-function checkAnswer(option, optionIndex, correctAnswer) {
+function checkAnswer(questionButton, option, optionIndex, correctAnswer) {
     console.log('option', option)
     console.log('optionIndex', optionIndex)
 
@@ -91,4 +98,8 @@ function checkAnswer(option, optionIndex, correctAnswer) {
         score--
         scoreDisplay.textContent = score
     }
+    //on a mis un array vide du coup il enregistre la question dans l'array
+    clicked.push(option)
+    //le bouton est dasctivé quand on clique dessus 
+    questionButton.disabled = clicked.includes(option)
 }
