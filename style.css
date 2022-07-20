@@ -49,3 +49,11 @@
     align-items: center;
     justify-content: center;
 }
+
+.answer-display.correct {
+    color: white;
+}
+
+.answer-display.wrong {
+    color: brown;
+}

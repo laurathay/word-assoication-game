@@ -99,11 +99,12 @@ function checkAnswer(questionBox, questionButton, option, optionIndex, correctAn
     if (optionIndex === correctAnswer) {
         score++
         scoreDisplay.textContent = score
-        addResult(questionBox, "Correct!")
+        // les '' c'est pour indiquer la classe qui correspond
+        addResult(questionBox, "Correct!", 'correct')
     } else {
         score--
         scoreDisplay.textContent = score
-        addResult(questionBox, "Wrong!")
+        addResult(questionBox, "Wrong!", 'wrong')
     }
     //on a mis un array vide du coup il enregistre la question dans l'array
     clicked.push(option)
@@ -111,9 +112,14 @@ function checkAnswer(questionBox, questionButton, option, optionIndex, correctAn
     questionButton.disabled = clicked.includes(option)
 }
 
-function addResult(questionBox, answer) {
+function addResult(questionBox, answer, className) {
     //selectionne la classe dans la questionBox
     const answerDisplay = questionBox.querySelector('.answer-display')
+    //eneleve la classe wrong 
+    answerDisplay.classList.remove('wrong')
+    answerDisplay.classList.remove('correct')
+    //met la bonne classe selon la correction
+    answerDisplay.classList.add(className)
     //affiche la reponse dans cette classe
     answerDisplay.textContent = answer
 }
